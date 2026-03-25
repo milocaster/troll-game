@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>3Plus Troll Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 600x480 resolution internally for pixelated feel -->
+        <canvas id="gameCanvas" width="800" height="480"></canvas>
+        <div id="hud">
+            <div>
+                <button id="btn-bgm" class="btn" style="padding: 5px 10px; font-size: 14px; margin-right: 10px; margin-bottom: 0; pointer-events: auto;">🔊 BGM</button>
+                STAGE: <span id="stage-text" style="color:#2196F3;">1</span>
+            </div>
+            <div>SCORE: <span id="hud-score" style="color:#FFD700;">0</span></div>
+            <div>DEATHS: <span id="hud-death" style="color:#ff5252;">0</span></div>
+        </div>
+        
+        <!-- Mobile Controls -->
+        <div id="mobile-controls">
+            <div class="ctrl-group">
+                <div id="btn-left" class="ctrl-btn">◀</div>
+                <div id="btn-right" class="ctrl-btn">▶</div>
+            </div>
+            <div id="btn-jump" class="ctrl-btn">▲</div>
+        </div>
+
+        <!-- Title Screen -->
+        <div id="screen-title" class="ui-screen">
+            <h1>Troll Runner</h1>
+            <p style="font-size: 20px; margin-bottom: 30px; text-align:center;">ระวังหัวร้อน! เล่นด่าน 1-1 ให้จบ<br>เพื่อรับ 100 เหรียญ</p>
+            <button class="btn" id="btn-start">Start Game</button>
+            <button class="btn" id="btn-leaderboard" style="background:#2196F3; box-shadow: 0 4px 0 #0b7dda; padding: 10px 20px; font-size:18px;">Leaderboard</button>
+        </div>
+
+        <!-- Death Screen -->
+        <div id="screen-death" class="ui-screen hidden">
+            <h1 style="color: #ff5252; text-shadow: 3px 3px 0 #000;">YOU DIED</h1>
+            <div id="troll-message">โถ่เอ๊ย! แค่นี้ก็ตาย?</div>
+            <button class="btn" id="btn-retry">Retry (เกิดใหม่)</button>
+        </div>
+
+        <!-- Level Transition Screen -->
+        <div id="screen-transition" class="ui-screen hidden">
+            <h1 style="color: #2196F3;">STAGE CLEARED!</h1>
+            <p style="font-size:24px; color: #fff; margin-top:20px; animation: pulse 1s infinite;">เตรียมตัวพบกับความกวนขั้นถัดไป...</p>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="screen-leaderboard" class="ui-screen hidden">
+            <h1 style="color: #FFD700; font-size: 32px; text-shadow: 3px 3px 0 #000;">LEADERBOARD</h1>
+            <div class="leaderboard-board" style="max-height: 250px; overflow-y: auto;">
+                <div class="lb-row"><span>1. MarioNeko</span><span>999 Win</span></div>
+                <div class="lb-row"><span>2. BellaFC</span><span>500 Win</span></div>
+                <div class="lb-row"><span>3. TrollSlayer</span><span>250 Win</span></div>
+                <div class="lb-row"><span>4. NonToxic</span><span>120 Win</span></div>
+                <div class="lb-row" style="color:#FFD700; font-weight:bold;"><span>5. You (New)</span><span>1 Win</span></div>
+            </div>
+            <button class="btn" id="btn-leaderboard-close" style="font-size: 18px; padding: 10px 20px;">Close</button>
+        </div>
+
+        <!-- Win Screen -->
+        <div id="screen-win" class="ui-screen hidden">
+            <h1 style="color: #4CAF50;">GAME CLEARED!</h1>
+            <p style="font-size:24px; color: #FFD700; font-weight:bold;">You survived the trolls!</p>
+            <button class="btn" id="btn-menu">Back to Menu</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
