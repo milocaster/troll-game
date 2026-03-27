@@ -129,6 +129,7 @@ h1 { color: #ffeb3b; font-size: 38px; margin: 0 0 10px; text-shadow: 4px 4px 0 #
     box-sizing: border-box;
     z-index: 5;
     pointer-events: none;
+    opacity: 0.4;
 }
 .ctrl-group { display: flex; gap: 15px; }
 .ctrl-btn {

@@ -35,6 +35,7 @@
             <p style="font-size: 20px; margin-bottom: 30px; text-align:center;">ระวังหัวร้อน! เล่นด่าน 1-1 ให้จบ<br>เพื่อรับ 100 เหรียญ</p>
             <button class="btn" id="btn-start">Start Game</button>
             <button class="btn" id="btn-leaderboard" style="background:#2196F3; box-shadow: 0 4px 0 #0b7dda; padding: 10px 20px; font-size:18px;">Leaderboard</button>
+            <button class="btn" id="btn-stages" style="background-color: #ffaa00; font-size: 16px; margin-top:20px;">Select Stage (Debug)</button>
         </div>
 
         <!-- Death Screen -->
@@ -70,6 +71,43 @@
             <button class="btn" id="btn-menu">Back to Menu</button>
         </div>
     </div>
-    <script src="game.js"></script>
+    <script src="game.js?v=1774596826963"></script>
+
+    <!-- Stage Select Modal -->
+    <div id="stage-select-screen" style="display:none; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.9); padding:20px; border:4px solid #fff; border-radius: 10px; z-index:999; text-align:center;">
+        <h2 style="color:#fff; margin-top:0;">SELECT STAGE</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width: 300px; margin-bottom:20px;">
+            <button class="btn" onclick="startStage(0)" style="padding: 10px 20px;">1-1</button>
+            <button class="btn" onclick="startStage(1)" style="padding: 10px 20px;">1-2</button>
+            <button class="btn" onclick="startStage(2)" style="padding: 10px 20px;">1-3</button>
+            <button class="btn" onclick="startStage(3)" style="padding: 10px 20px;">1-4</button>
+            <button class="btn" onclick="startStage(4)" style="padding: 10px 20px; background-color: #8a2be2;">2-1</button>
+            <button class="btn" onclick="startStage(5)" style="padding: 10px 20px; background-color: #8a2be2;">2-2</button>
+            <button class="btn" onclick="startStage(6)" style="padding: 10px 20px; background-color: #8a2be2;">2-3</button>
+            <button class="btn" onclick="startStage(7)" style="padding: 10px 20px; background-color: #8a2be2;">2-4</button>
+        </div>
+        <button class="btn" onclick="document.getElementById('stage-select-screen').style.display='none'">Close</button>
+    </div>
+    
+    <script>
+        document.getElementById('btn-stages').addEventListener('click', () => {
+            document.getElementById('stage-select-screen').style.display = 'block';
+        });
+
+        window.startStage = function(levelIndex) {
+            document.getElementById('stage-select-screen').style.display = 'none';
+            document.getElementById('screen-title').style.display = 'none';
+            // Start the stage
+            resetGame(true); // reset score/death
+            currentLevelNum = levelIndex; 
+            resetGame(false); // load the literal map / configs
+        };
+
+        document.getElementById('btn-menu').addEventListener('click', () => {
+            location.reload();
+        });
+    </script>
+
+
 </body>
 </html>
